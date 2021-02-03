@@ -1,0 +1,11 @@
+.delete form,
+.edit form{
+    width: 60%;
+    margin: 30px auto;
+    background-color: lightgrey;
+    border-radius: 5px;
+}
+.delete .btn,
+.edit .btn{
+    width: 100%;
+}

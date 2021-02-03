@@ -1,0 +1,8 @@
+.home h2{
+    font-family: 'Carter One', cursive;
+}
+.home .search-field{
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+    width: 50%;
+}

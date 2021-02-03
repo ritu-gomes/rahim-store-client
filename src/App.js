@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Adding from "./components/Adding/Adding";
+import Home from "./components/Home/Home";
+import Editing from "./components/Editing/Editing";
+import { createContext, useState } from "react";
+
+export const productContext = createContext();
 
 function App() {
+  const [products, setProducts] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <productContext.Provider value={[products, setProducts]}>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/adding">
+            <Adding />
+          </Route>
+          <Route path="/edit/:id">
+            <Editing />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </productContext.Provider>
   );
 }
 
